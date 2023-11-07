@@ -1,0 +1,42 @@
+import time
+
+COUNT = 0
+x = int(input("Enter Number of Terms: "))
+first = 0
+sec = 1
+c = 0
+
+if x < 0:
+    print("Enter valid input..")
+elif x == 0:
+    print(0)
+elif x == 1:
+    print("Fibonacci series upto", x, "is", first)
+else:
+    start_time = time.time()  # Start time
+
+    while c < x:
+        print(first)
+        COUNT += 1
+        nth = first + sec
+        COUNT += 1
+        first = sec
+        COUNT += 1
+        sec = nth
+        COUNT += 1
+        c += 1
+        COUNT += 1
+
+    end_time = time.time()  # End time
+
+    print("Steps required using Counter:", COUNT)
+
+    # Calculate time complexity
+    time_complexity = "O(n)"
+
+    # Calculate space complexity
+    space_complexity = "O(1)"
+
+    print(f"Time Complexity: {time_complexity}")
+    print(f"Space Complexity: {space_complexity}")
+    print(f"Execution Time: {end_time - start_time} seconds")

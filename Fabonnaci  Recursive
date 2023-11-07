@@ -1,0 +1,38 @@
+import time
+
+COUNT = 0
+
+def recur_fibo(n):
+    global COUNT
+    COUNT = COUNT + 1
+    if n <= 1:
+        return n
+    else:
+        return recur_fibo(n-1) + recur_fibo(n-2)
+
+# take input from the user
+nterms = int(input("How many terms? "))
+
+# check if the number of terms is valid
+if nterms <= 0:
+    print("Please enter a positive integer")
+else:
+    start_time = time.time()  # Start time
+
+    print("Fibonacci sequence:")
+    for i in range(nterms):
+        print(recur_fibo(i))
+
+    end_time = time.time()  # End time
+
+    print("Steps required using Counter ", COUNT)
+
+    # Calculate time complexity
+    time_complexity = "O(2^n)"
+
+    # Calculate space complexity
+    space_complexity = "O(n)"
+
+    print(f"Time Complexity: {time_complexity}")
+    print(f"Space Complexity: {space_complexity}")
+    print(f"Execution Time: {end_time - start_time} seconds")

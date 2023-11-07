@@ -1,0 +1,51 @@
+import random
+import time
+
+def swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+
+def partition_left(arr, low, high):
+    pivot = arr[high]
+    i = low
+    for j in range(low, high):
+        if arr[j] <= pivot:
+            swap(arr, i, j)
+            i += 1
+    swap(arr, i, high)
+    return i
+
+def partition_right(arr, low, high):
+    r = random.randint(low, high)
+    swap(arr, r, high)
+    return partition_left(arr, low, high)
+
+def quicksort(arr, low, high):
+    if low < high:
+        p = partition_right(arr, low, high)
+        quicksort(arr, low, p - 1)
+        quicksort(arr, p + 1, high)
+
+def print_array(arr):
+    for i in arr:
+        print(i, end=" ")
+    print()
+
+if __name__ == "__main__":
+    arr = [6, 4, 12, 8, 15, 16]
+    print("Original array:", end=" ")
+    print_array(arr)
+
+    start_time = time.time()
+    quicksort(arr, 0, len(arr) - 1)
+    end_time = time.time()
+
+    print("Sorted array:", end=" ")
+    print_array(arr)
+
+    execution_time = end_time - start_time
+    print(f"Execution Time: {execution_time} seconds")
+
+    # Space Complexity Analysis
+    # In this case, the space complexity of the code is O(log(n)) due to the recursive calls in quicksort.
